@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FairShare - User Wallet</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("BMRjAQsgMInt6qmQi"); // Your Public Key
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
@@ -19,7 +25,14 @@
         function checkBalance() {
             const email = document.getElementById("emailInput").value;
             if (email) {
-                document.getElementById("balanceDisplay").innerHTML = "Balance: Check your email for your latest $FAIR earnings!";
+                document.getElementById("balanceDisplay").innerHTML = "Balance: We’re checking—hang tight!";
+                emailjs.send("service_fyaz408", "template_vekcyhj", { email: email })
+                    .then(() => {
+                        document.getElementById("balanceDisplay").innerHTML = "Balance: Check your email soon!";
+                    }, (error) => {
+                        document.getElementById("balanceDisplay").innerHTML = "Oops! Something went wrong.";
+                        console.log('Failed to send email:', error);
+                    });
             } else {
                 document.getElementById("balanceDisplay").innerHTML = "Balance: Please enter an email!";
             }
