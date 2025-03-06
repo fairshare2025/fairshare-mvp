@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FairShare - User Wallet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>FairShare Wallet</h1>
+        <p class="subtitle">See how much $FAIR you’ve earned!</p>
+        <input type="email" id="emailInput" placeholder="Enter your email">
+        <button onclick="checkBalance()">Check Balance</button>
+        <p id="balanceDisplay">Balance: 0 $FAIR</p>
+        <p>Contribute data to earn more: <a href="https://forms.gle/qxgrEPziR8tWwEY5A">Submit Now</a></p>
+    </div>
+    <script>
+        function checkBalance() {
+            const email = document.getElementById("emailInput").value;
+            if (email) {
+                document.getElementById("balanceDisplay").innerHTML = "Balance: Check your email for your latest $FAIR earnings!";
+            } else {
+                document.getElementById("balanceDisplay").innerHTML = "Balance: Please enter an email!";
+            }
+        }
+    </script>
+</body>
+</html>
